@@ -1,0 +1,15 @@
+body {
+    background:
+      repeating-linear-gradient( 45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
+      #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
+      #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)),repeating-linear-gradient( 45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
+      #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
+      #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)) 17px 17px,
+      repeating-linear-gradient(-45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
+      #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
+      #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)),repeating-linear-gradient(-45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
+      #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
+      #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)) 17px 17px #050404;
+background-size: 34px 34px;
+
+}
