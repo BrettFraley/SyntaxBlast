@@ -17,32 +17,56 @@ const SyntaxBlast = config => {
 
 
     startButton.addEventListener('click', () => {
-        gameInit()
+        console.log(config)
     }, false)
 
     setEl("player-stats", "SET PLAYER STATS TEST")
 
+    function detectCompletion() {
+      return playerInput.value === currentChallenge.innerHTML
+    }
+
+    function textEnemyEffects(font) {
+      currentChallenge.style.fontSize = font + 2 + "px"
+      currentChallenge.opacity += 3
+    }
+
     function levelLooper() {
         let i = 0
+        let font = 2
+
         setInterval(() => {
 
-            i = i == TESTS.INTRO_LEVEL_TEST.length - 1 ? 0 : i + 1
+            if (detectCompletion()) {
+              i++
+              clearInterval()
+            }
 
+            //i = i == TESTS.INTRO_LEVEL_TEST.length - 1 ? 0 : i + 1
             currentChallenge.innerHTML = TESTS.INTRO_LEVEL_TEST[i]
 
-      }, 3000);
+            setInterval(() => {
+              font++
+              console.log(font)
+              textEnemyEffects(font)
+
+              if (font > 49) {
+                  font = 2
+                  clearInterval()
+              }
+            }, 1000)
+
+
+
+
+      }, 10000);
     } levelLooper();
 }
 
 const setEl = (id, val) => document.getElementById(id).innerHTML = val
 
-// NOTE: gameInit shout accept params like
-// series.start, series.pause, series.stop, series.complete
-const gameInit = () => {
-   SyntaxBlast('test - config')
-}
 
-
+SyntaxBlast('test - config')
 
 /**
 Give the illusion of paralax proportion using
