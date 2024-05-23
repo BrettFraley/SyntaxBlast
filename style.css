@@ -44,6 +44,15 @@ code {
 
 }
 
+#player-input {
+  min-height:100px;
+  width: 40vw;
+  background-color: #333;
+  color: lime;
+  font-family: courier;
+  font-size: 1.2rem;
+}
+
 /* NOTE: remember that darkslategrey looks smooth behind the logo
   - think about this if/when I/we ever do themed levels <--- which
   - should definitely be a thing.

@@ -16,25 +16,25 @@
 
     <div id="player-stats"></div>
 
-
-    <code>a = [6, 7, 8, 9 , 10];</code>
-    <code>b = [1, 2, 3, 4 , 5];</code>
-
         <div id="wrapper">
 
             <button id="start-button" class="show">[ ***s t a r t*** ]</button>
 
             <div id="level-area">
-                
-
+                <code id="current-challenge" class="level-challenge">
+                    a = [6, 7, 8, 9 , 10];
+                </code>
             </div>
+
+            <textarea id="player-input"></textarea>
 
         </div>
 
 
     <footer></footer>
 
-    <script defer src="syntax-blast.js"></script>
+    <script defer type="module" src="levels/levelTests.js"></script>
+    <script defer type="module" src="syntax-blast.js"></script>
     
 </body>
 </html>
