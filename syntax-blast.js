@@ -1,6 +1,5 @@
 import { TESTS } from "/levels/levelTests.js";
 
-
 const SyntaxBlast = config => {
 
     // Wrappers and UI controls
@@ -11,24 +10,39 @@ const SyntaxBlast = config => {
     // Game level cahllenge elements
     let currentChallenge = document.getElementById('current-challenge')
 
-
     // Keyboard input
     let playerInput = document.getElementById('player-input')
-
 
     startButton.addEventListener('click', () => {
         console.log(config)
     }, false)
 
-    setEl("player-stats", "SET PLAYER STATS TEST")
+
+    let TEST_LEVEL_STATS = {
+        levelNumber: 0,
+        levelName: "TESTS",
+        kills: 0,
+        health: 100
+    }
+
+    function buildStatsDisplay(stats) {
+
+        return `<p>Level #: ${stats.levelNumber} -
+                Level Name: ${stats.levelName}</br>
+                Kills: ${stats.kills} -
+                Health: ${stats.health}</p>`
+    }
+
+
+    setEl("player-stats", buildStatsDisplay(TEST_LEVEL_STATS))
 
     function detectCompletion() {
       return playerInput.value === currentChallenge.innerHTML
     }
 
     function textEnemyEffects(font) {
-      currentChallenge.style.fontSize = font + 2 + "px"
-      currentChallenge.opacity += 3
+      currentChallenge.style.fontSize = font + 1 + "px"
+      currentChallenge.style.opacity += 3.0
     }
 
     function levelLooper() {
@@ -38,26 +52,27 @@ const SyntaxBlast = config => {
         setInterval(() => {
 
             if (detectCompletion()) {
-              i++
-              clearInterval()
+
+                TEST_LEVEL_STATS.kills += 1
+                font = 1
+                i++
+                clearInterval()
             }
 
-            //i = i == TESTS.INTRO_LEVEL_TEST.length - 1 ? 0 : i + 1
-            currentChallenge.innerHTML = TESTS.INTRO_LEVEL_TEST[i]
+            currentChallenge.innerHTML = TESTS.INTRO_LEVEL_TEST[i] || "L e V e L C o M p L e T e"
 
             setInterval(() => {
               font++
               console.log(font)
               textEnemyEffects(font)
 
-              if (font > 49) {
-                  font = 2
+              if (font > 49 && !detectCompletion()) {
+                  font = 1
+                  TEST_LEVEL_STATS.health -= 25
+                  setEl("player-stats", buildStatsDisplay(TEST_LEVEL_STATS))
                   clearInterval()
               }
-            }, 1000)
-
-
-
+            }, 400)
 
       }, 10000);
     } levelLooper();
@@ -65,13 +80,5 @@ const SyntaxBlast = config => {
 
 const setEl = (id, val) => document.getElementById(id).innerHTML = val
 
-
 SyntaxBlast('test - config')
 
-/**
-Give the illusion of paralax proportion using
-opacity very light and font size very small
-and increasing over the time limit and disipating
-"collison" where the player loses health as they
-did not complete the block acurately in time
-*/
