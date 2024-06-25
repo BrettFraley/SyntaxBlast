@@ -1,45 +1,19 @@
 import { TESTS } from "/levels/levelTests.js";
 
+const getEl = (id, val) => document.getElementById(id)
+const setEl = (id, val) => getEl.innerHTML = val
+
+// Main game loop setup, accepts a config arg that is currently not used
 const SyntaxBlast = config => {
 
-    // Wrappers and UI controls
-    let levelArea = document.getElementById('level-area')
-    let playerStats = document.getElementById('player-stats')
-    let startButton = document.getElementById('start-button')
-
-    // Game level cahllenge elements
-    let currentChallenge = document.getElementById('current-challenge')
+    // Game level challenge elements
+    let currentChallenge = getEl('current-challenge')
 
     // Keyboard input
-    let playerInput = document.getElementById('player-input')
+    let playerInput = getEl('player-input')
 
-    startButton.addEventListener('click', () => {
-        console.log(config)
-    }, false)
-
-
-    let TEST_LEVEL_STATS = {
-        levelNumber: 0,
-        levelName: "TESTS",
-        kills: 0,
-        health: 100
-    }
-
-    function buildStatsDisplay(stats) {
-
-        return `<p>Level #: ${stats.levelNumber} -
-                Level Name: ${stats.levelName}</br>
-                Kills: ${stats.kills} -
-                Health: ${stats.health}</p>`
-    }
-
-
-    setEl("player-stats", buildStatsDisplay(TEST_LEVEL_STATS))
-
-    function detectCompletion() {
-      return playerInput.value === currentChallenge.innerHTML
-    }
-
+    let detectCompletion = () => playerInput.value === currentChallenge.innerHTML
+    
     function textEnemyEffects(font) {
       currentChallenge.style.fontSize = font + 1 + "px"
       currentChallenge.style.opacity += 3.0
@@ -56,14 +30,12 @@ const SyntaxBlast = config => {
                 TEST_LEVEL_STATS.kills += 1
                 font = 1
                 i++
+                currentChallenge.innerHTML = TESTS.INTRO_LEVEL_TEST[i] || "L e V e L C o M p L e T e"
                 clearInterval()
             }
 
-            currentChallenge.innerHTML = TESTS.INTRO_LEVEL_TEST[i] || "L e V e L C o M p L e T e"
-
             setInterval(() => {
               font++
-              console.log(font)
               textEnemyEffects(font)
 
               if (font > 49 && !detectCompletion()) {
@@ -72,13 +44,35 @@ const SyntaxBlast = config => {
                   setEl("player-stats", buildStatsDisplay(TEST_LEVEL_STATS))
                   clearInterval()
               }
-            }, 400)
+            }, 500)
 
-      }, 10000);
-    } levelLooper();
+        }, 10000);
+    }
+
+    levelLooper();
 }
 
-const setEl = (id, val) => document.getElementById(id).innerHTML = val
+ // Stats
+let TEST_LEVEL_STATS = {
+    levelNumber: 0,
+    levelName: "TESTS",
+    kills: 0,
+    health: 100
+}
 
-SyntaxBlast('test - config')
+function buildStatsDisplay(stats) {
+
+  return `<p>Level #: ${stats.levelNumber} -
+          Level Name: ${stats.levelName}</br>
+          Kills: ${stats.kills} -
+          Health: ${stats.health}</p>`
+}
+
+// Start Button / Game Init
+
+getEl('start-button').addEventListener('click', () => {
+    console.log('started...')
+    setEl("player-stats", buildStatsDisplay(TEST_LEVEL_STATS))
+    SyntaxBlast('test - config')
+}, false)
 

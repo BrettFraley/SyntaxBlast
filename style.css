@@ -41,10 +41,12 @@ code {
   display: block;
   margin: 10px auto;
   width: 60vw;
-  height: 30vw;
+  height: 15vw;
   font-size: 16px;
   font-weight: 700;
   transition: font-size .25s ease-in-out;
+  border-radius: 50%;
+  padding-top: 20%;
 
 }
 

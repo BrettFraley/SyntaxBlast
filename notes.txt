@@ -1,0 +1,13 @@
+Syntax Blast TODO / Notes
+
+- There's an issue with the text animation loop.. where
+  it gets faster and faster..
+
+- Work on UI, layout, get basic pieces in place
+    - The player-input element
+    - The level-area element
+
+After getting level logic, stats, level UI loading and saving complete:
+- Should probably be using a canvas, animation lib, and animation frames
+- Build levels
+- Add level configs
