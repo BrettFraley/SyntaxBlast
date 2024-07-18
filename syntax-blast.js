@@ -1,7 +1,7 @@
 import { TESTS } from "/levels/levelTests.js";
 
 const getEl = (id, val) => document.getElementById(id)
-const setEl = (id, val) => getEl.innerHTML = val
+const setEl = (id, val) => getEl(id).innerHTML = val
 
 // Main game loop setup, accepts a config arg that is currently not used
 const SyntaxBlast = config => {
@@ -20,32 +20,32 @@ const SyntaxBlast = config => {
     }
 
     function levelLooper() {
-        let i = 0
+        let i = 0 // index of current 'challenge'
         let font = 2
 
         setInterval(() => {
 
             if (detectCompletion()) {
-
+		
                 TEST_LEVEL_STATS.kills += 1
                 font = 1
                 i++
                 currentChallenge.innerHTML = TESTS.INTRO_LEVEL_TEST[i] || "L e V e L C o M p L e T e"
                 clearInterval()
-            }
+	    }
+	    else {
+            	setInterval(() => {
+              	  font++
+                  textEnemyEffects(font)
 
-            setInterval(() => {
-              font++
-              textEnemyEffects(font)
-
-              if (font > 49 && !detectCompletion()) {
-                  font = 1
-                  TEST_LEVEL_STATS.health -= 25
-                  setEl("player-stats", buildStatsDisplay(TEST_LEVEL_STATS))
-                  clearInterval()
-              }
-            }, 500)
-
+              	  if (font > 49 && !detectCompletion()) {
+                    font = 1
+                    TEST_LEVEL_STATS.health -= 25
+                    setEl("player-stats", buildStatsDisplay(TEST_LEVEL_STATS))
+                    clearInterval()
+		  }
+            	}, 500)
+	    }
         }, 10000);
     }
 

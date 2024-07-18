@@ -1,13 +1,29 @@
 Syntax Blast TODO / Notes
 
-- There's an issue with the text animation loop.. where
-  it gets faster and faster..
-
 - Work on UI, layout, get basic pieces in place
     - The player-input element
     - The level-area element
 
 After getting level logic, stats, level UI loading and saving complete:
 - Should probably be using a canvas, animation lib, and animation frames
-- Build levels
-- Add level configs
+- Build a level
+
+MOVING FORWARD
+---------------
+- Keep to one level.
+- A missed challenge reduces health by -25 and that challenge is just gone
+- The Player Stats
+- Basic needed UI Things
+- Inviting instructions
+- Start button launches instructions and ready button
+	- Logo shrinks down.
+	- Level area appears with ready button
+	- STATS: Current game attempt stats
+		- Time in game stats eg: how far, how much time, attempts
+FUN
+- Soundtrack with Options
+
+
+
+
+

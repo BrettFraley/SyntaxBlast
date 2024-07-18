@@ -38,19 +38,20 @@ header {
   box-shadow: 0px -10px 15px teal inset, 0px 10px 10px #000;
 }
 
-#current-challenge {
-  background-color: #ecf3ef;
-  color: #222;
+code {
+  background-color: #000;
+  color: #eee;
   padding: 15px;
   display: block;
   margin: 10px auto;
-  width: 70vw;
+  width: 60vw;
+  height: 15vw;
   font-size: 16px;
   font-weight: 700;
   transition: font-size .25s ease-in-out;
-  border-radius: 12px;
-  height: 10vh;
-  text-shadow:3px 3px 5px lime, -7px 7px 5px #000;
+  border-radius: 50%;
+  padding-top: 20%;
+
 }
 
 #player-input {
@@ -74,15 +75,20 @@ header {
   width:  575px;
   height: 425px;
   padding: 30px;
+  border-radius: 12px;
+  border: solid 5px darkviolet;
+  background-color: #e3e3e8;
+  text-shadow: -5px 3px 5px lime, -7px 6px 10px #000;
+  box-shadow: 0px -10px 15px teal inset, 0px 10px 10px #000;
 }
 
 #player-stats {
   padding: 10px;
-  width: 60vw;
+  border:dashed 3px #000;
   min-height: 35px;
-  background-color: #ecf3ef;
+  background-color: none;
+  opacity: 0.7;
   color: #000;
-  margin: 30px auto;
 }
 
 #player-stats p {
