@@ -1,7 +1,6 @@
 /* Lil' Helpers **/
 .hidden { display: none }
 
-
 /* Syntax Blast Rules  **/
 body {
   background:
@@ -57,7 +56,8 @@ header {
   transition: font-size .25s ease-in-out;
   border-radius: 12px;
   text-shadow:3px 3px 5px lime, -7px 7px 5px #000;
-  box-shadow: 0px -10px 15px teal inset, 0px 10px 10px #000;
+  box-shadow: 0px -10px 15px teal inset, 0px 10px 10px #000,
+              inset 0px 25px 15px yellow, inset 0px 0px 15px red;
   opacity: 0;
 }
 
@@ -123,6 +123,11 @@ header {
   text-align: justify;
 }
 
-
+/* Effects, CSS Animations, Tricks, & Aesthetics**/
+/* .burst {
+  width: 100px;
+  aspect-ratio: 1;
+  clip-path: polygon(100% 50%,89.92% 52.51%,99.61% 56.27%,89.29% 57.5%,98.43% 62.43%,88.04% 62.36%,96.49% 68.41%,86.19% 67.03%,93.82% 74.09%,83.77% 71.43%,90.45% 79.39%,80.82% 75.5%,86.45% 84.23%,77.38% 79.16%,81.87% 88.53%,73.51% 82.36%,76.79% 92.22%,69.27% 85.05%,71.29% 95.24%,64.72% 87.19%,65.45% 97.55%,59.95% 88.74%,59.37% 99.11%,55.01% 89.68%,53.14% 99.9%,50% 90%,46.86% 99.9%,44.99% 89.68%,40.63% 99.11%,40.05%
+} */
 
 
