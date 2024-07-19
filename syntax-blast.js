@@ -23,6 +23,7 @@ const SyntaxBlast = config => {
 
     // Keyboard input
     let playerInput = getEl('player-input')
+    playerInput.classList.remove('hidden')
 
     let detectChallengeComplete = () => playerInput.value === currentChallenge.innerHTML
     
@@ -40,6 +41,12 @@ const SyntaxBlast = config => {
 
         setInterval(() => {
             if (detectChallengeComplete()) {
+
+                playerInput.value = "Nice!" // randomize encouragin dialogue
+                setTimeout(() => {
+                    playerInput.value = ""
+                }, 1000)
+                
                 TEST_LEVEL_STATS.kills += 1
                 setEl("player-stats", updateStatsDisplay(TEST_LEVEL_STATS))
 
@@ -63,7 +70,7 @@ const SyntaxBlast = config => {
 
                 if (font > 49 && !detectChallengeComplete()) {
                     font = 1
-                    opacity = 0
+                    opacity = 0.2
                     width = 5
                     TEST_LEVEL_STATS.health -= 25
                     setEl("player-stats", updateStatsDisplay(TEST_LEVEL_STATS))
