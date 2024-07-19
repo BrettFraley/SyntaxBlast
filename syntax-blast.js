@@ -39,7 +39,7 @@ const SyntaxBlast = config => {
         let opacity = 0
         let width = 5   // up to 45vw  
 
-        setInterval(() => {
+        let levelSequence = setInterval(() => {
             if (detectChallengeComplete()) {
 
                 playerInput.value = "Nice!" // randomize encouragin dialogue
@@ -54,11 +54,17 @@ const SyntaxBlast = config => {
                 opacity = 0
                 width = 5
                 i++
-
+                
+                // If level[i] now does not exist -> levelComplete
                 currentChallenge.innerHTML = TESTS.INTRO_LEVEL_TEST[i] || dialog.levelComplete
 
                 if (currentChallenge.innerHTML === dialog.levelComplete) {
+                    console.log(currentChallenge.innerHTML === dialog.levelComplete)
+                    console.log(currentChallenge.innerHTML )
                     levelComplete = true
+                    clearInterval(levelSequence)
+                    
+                    
                 }
                 // Load / Reset Next Level...
                 // Level Ends SyntaxBlast() gets called again on next Level Start
@@ -83,6 +89,10 @@ const SyntaxBlast = config => {
     if (!levelComplete) {
         levelLooper(0);
     }
+    else {
+        currentChallenge.classList.add('level-complete')
+    }
+    
 }
 
  // Stats
