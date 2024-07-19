@@ -68,11 +68,24 @@ function buildStatsDisplay(stats) {
           Health: ${stats.health}</p>`
 }
 
-// Start Button / Game Init
+const startButtonClickInit = () => {
+    const button = getEl('start-button')
 
-getEl('start-button').addEventListener('click', () => {
-    console.log('started...')
-    setEl("player-stats", buildStatsDisplay(TEST_LEVEL_STATS))
-    SyntaxBlast('test - config')
-}, false)
+    button.addEventListener('click', () => {
+        
+        button.style.display = "none" // todo: add easein-out on display rule
+    
+        // Minimize landing logo
+        const logo = getEl('logo')
+        logo.classList.add('mini') // todo: ease here too
+    
+        // Set Stats
+        setEl("player-stats", buildStatsDisplay(TEST_LEVEL_STATS))    
+       
+    }, false)
+}
+
+startButtonClickInit();
+SyntaxBlast('test - config')
+
 

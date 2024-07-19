@@ -59,7 +59,8 @@ header {
   background-color: #333;
   color: lime;
   font-family: courier;
-  font-size: 1.2rem;
+  font-size: 3em;
+  text-align: center;
 }
 
 /* NOTE: remember that darkslategrey looks smooth behind the logo
@@ -76,13 +77,24 @@ header {
   padding: 30px;
 }
 
+#logo.mini {
+  width:  225px;
+  height: 125px;
+  padding: 30px;
+  position: absolute;
+  left: 0;
+  opacity: 0.6;
+}
+
 #player-stats {
   padding: 10px;
   width: 60vw;
   min-height: 35px;
   background-color: #ecf3ef;
   color: #000;
-  margin: 30px auto;
+  margin: 30px;
+  position: relataive;
+  left: 50vw;
 }
 
 #player-stats p {
