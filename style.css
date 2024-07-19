@@ -45,11 +45,12 @@ header {
 #current-challenge {
   background-color: #ff5700;
   color: #222;
-  padding: 5px; /** animated to 43 */
+  padding: 30px;
+  padding-bottom: 10px;
   display: block;
   margin: 10px auto;
   border: solid 3px #000;
-  width: 5vw; /* up to 45 **/
+  width: 4vw; /* up to 45 **/
   height: 10vh;
   font-size: 16px;
   font-weight: 700;

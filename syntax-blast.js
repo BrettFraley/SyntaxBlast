@@ -16,7 +16,7 @@ const dialog = {
 // Main game loop setup, accepts a config arg that is currently not used
 const SyntaxBlast = config => {
     
-    let levelSessionComplete = false
+    let levelComplete = false
 
     // Game level challenge elements
     let currentChallenge = getEl('current-challenge')
@@ -24,12 +24,11 @@ const SyntaxBlast = config => {
     // Keyboard input
     let playerInput = getEl('player-input')
 
-    let detectCompletion = () => playerInput.value === currentChallenge.innerHTML
+    let detectChallengeComplete = () => playerInput.value === currentChallenge.innerHTML
     
-    function textEnemyEffects(font, opacity, padding, width) {
+    function textEnemyEffects(font, opacity, width) {
         currentChallenge.style.fontSize = font + "px"
         currentChallenge.style.opacity = opacity
-        currentChallenge.style.padding = padding + "px"
         currentChallenge.style.width = width + "vw"
     }
 
@@ -37,22 +36,22 @@ const SyntaxBlast = config => {
         let i = challenge_index || 0 // index of current 'challenge'
         let font = 1
         let opacity = 0
-        let padding = 5 // up to 30px padding
         let width = 5   // up to 45vw  
 
         setInterval(() => {
-            if (detectCompletion()) {
+            if (detectChallengeComplete()) {
                 TEST_LEVEL_STATS.kills += 1
+                setEl("player-stats", updateStatsDisplay(TEST_LEVEL_STATS))
+
                 font = 1
                 opacity = 0
-                padding = 5
                 width = 5
                 i++
 
                 currentChallenge.innerHTML = TESTS.INTRO_LEVEL_TEST[i] || dialog.levelComplete
 
                 if (currentChallenge.innerHTML === dialog.levelComplete) {
-                    levelSessionComplete = true
+                    levelComplete = true
                 }
                 // Load / Reset Next Level...
                 // Level Ends SyntaxBlast() gets called again on next Level Start
@@ -60,23 +59,21 @@ const SyntaxBlast = config => {
             else {
                 font++
                 opacity += 0.02
-                padding += 1
                 width += 1
 
-                if (font > 49 && !detectCompletion()) {
+                if (font > 49 && !detectChallengeComplete()) {
                     font = 1
                     opacity = 0
-                    padding = "5px"
-                    width = "5vw"
+                    width = 5
                     TEST_LEVEL_STATS.health -= 25
-                    setEl("player-stats", buildStatsDisplay(TEST_LEVEL_STATS))
+                    setEl("player-stats", updateStatsDisplay(TEST_LEVEL_STATS))
                 }
-                textEnemyEffects(font, opacity, padding, width)
+                textEnemyEffects(font, opacity, width)
             }
         }, 200)
     }
 
-    if (!levelSessionComplete) {
+    if (!levelComplete) {
         levelLooper(0);
     }
 }
@@ -89,7 +86,7 @@ let TEST_LEVEL_STATS = {
     health: 100
 }
 
-function buildStatsDisplay(stats) {
+function updateStatsDisplay(stats) {
 
   return `<p>Level: ${stats.levelNumber}</br>
           Name: ${stats.levelName}</br>
@@ -109,7 +106,7 @@ const startButtonClickInit = () => {
         logo.classList.add('mini') // todo: ease here too
     
         // Set Stats
-        const stats = setEl("player-stats", buildStatsDisplay(TEST_LEVEL_STATS))
+        const stats = setEl("player-stats", updateStatsDisplay(TEST_LEVEL_STATS))
         stats.classList.remove('hidden')
         
         SyntaxBlast('test - config')
