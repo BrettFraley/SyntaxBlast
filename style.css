@@ -1,22 +1,26 @@
+/* Lil' Helpers **/
+.hidden { display: none }
+
+
+/* Syntax Blast Rules  **/
 body {
-    background:
-      repeating-linear-gradient( 45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
-      #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
-      #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)),repeating-linear-gradient( 45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
-      #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
-      #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)) 17px 17px,
-      repeating-linear-gradient(-45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
-      #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
-      #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)),repeating-linear-gradient(-45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
-      #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
-      #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)) 17px 17px #050404;
-      background-size: 34px 34px;
-
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      font-weight: 900;
-      font-size: larger;
-
-      text-align: center;
+  background:
+    repeating-linear-gradient( 45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
+    #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
+    #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)),repeating-linear-gradient( 45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
+    #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
+    #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)) 17px 17px,
+    repeating-linear-gradient(-45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
+    #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
+    #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)),repeating-linear-gradient(-45deg,#0000 calc(-650%/13) calc(50%/13),#69e54e 0 calc(100%/13),
+    #0000 0 calc(150%/13),#69e54e 0 calc(200%/13),
+    #0000 0 calc(250%/13),#69e54e 0 calc(300%/13)) 17px 17px #050404;
+  
+  background-size: 34px 34px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 900;
+  font-size: larger;
+  text-align: center;
 }
 
 header {
@@ -39,28 +43,32 @@ header {
 }
 
 #current-challenge {
-  background-color: #ecf3ef;
+  background-color: #ff5700;
   color: #222;
-  padding: 15px;
+  padding: 5px; /** animated to 43 */
   display: block;
   margin: 10px auto;
-  width: 70vw;
+  border: solid 3px #000;
+  width: 5vw; /* up to 45 **/
+  height: 10vh;
   font-size: 16px;
   font-weight: 700;
   transition: font-size .25s ease-in-out;
   border-radius: 12px;
-  height: 10vh;
   text-shadow:3px 3px 5px lime, -7px 7px 5px #000;
+  opacity: 0;
 }
 
 #player-input {
   min-height:100px;
-  width: 40vw;
+  width: 45vw;
   background-color: #333;
   color: lime;
   font-family: courier;
   font-size: 3em;
   text-align: center;
+  margin: 30px auto;
+  padding: 15px;
 }
 
 /* NOTE: remember that darkslategrey looks smooth behind the logo
@@ -83,23 +91,31 @@ header {
   padding: 30px;
   position: absolute;
   left: 0;
-  opacity: 0.6;
 }
 
 #player-stats {
   padding: 10px;
-  width: 60vw;
+  width: 275PX;;
   min-height: 35px;
-  background-color: #ecf3ef;
-  color: #000;
-  margin: 30px;
-  position: relataive;
+  background-color:#0B0A0C;
+  color: lime;
+  font-family:'Courier New', Courier, monospace;
+  margin: 15px;
+  position: relative;
   left: 50vw;
+  border: dashed 5px #00dd70;
+  border-radius: 15px;
+  text-shadow: -5px 3px 5px #2d073a, -7px 6px 10px #000;
+  box-shadow: 0px -10px 15px teal inset, 0px 10px 10px #000;
+
 }
 
 #player-stats p {
-  background-color: none;
+  border-radius: 15px;
   opacity: 1;
+  font-size: 1.25em;
+  padding: 15px;
+  text-align: justify;
 }
 
 

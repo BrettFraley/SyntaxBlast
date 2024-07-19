@@ -24,6 +24,27 @@ FUN
 - Soundtrack with Options
 
 
+JULY 19th
+-----------
+- do something with the stats
+    -- positioned them 						[ X ]
+    ---- next hide until game init			[   ] 
+    ---- next - make style changes			[   ]
+
+- put padding above player input / mess with width
+- try colors on level area
+- FIX LOOP
+
+
+- try body background ui color switcher (only in level dev / test area level)
+
+
+The whole first level is a playground / demo / customizable level
+until moved to a switch that may be turned off and on
+once game is further along..
+
+
+
 
 
 
