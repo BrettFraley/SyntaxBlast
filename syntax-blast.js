@@ -8,6 +8,8 @@ const setEl = (id, val) => {
     return el
 }
 
+const showEl = (el, bool) => el['display'] = bool ? 'block' : 'none'
+
 // Dialog
 const dialog = {
     levelComplete: "L e V e L C o M p L e T e",
@@ -17,43 +19,22 @@ const dialog = {
 const SyntaxBlast = config => {
     
     let levelComplete = false
-
-    // Game level challenge elements
     let currentChallenge = getEl('current-challenge')
-
-    // Keyboard input
     let playerInput = getEl('player-input')
 
-    // Show message, wait timeInterval, clear it, show next message
-    const playPlayerInputMessage = (messages, timeInterval) => {
-        for (let i = 0; i < messages.length; i++) {
-            playerInput.value = messages[i]
+    // Show message, wait timeInterval, clear it, show next message..NOTE: revisit
+    const playMessage = (message, timeInterval) => {
+            playerInput.value = message
             setTimeout(() => { playerInput.value = "" }, timeInterval)
-        }
     }
 
     const showStartButton = bool => {
-        getEl('start-button').display = 'block';
+        const startButton = getEl('start-button')
+        startButton.display = bool ? 'block' : 'none'
     }
 
-    const showPlayerInput = bool => {
-        if (bool) {
-            playerInput.classList.remove('hidden')
-            playerInput.focus()
-        }
-        else {
-            playerInput.classList.add('hidden')
-        }
-    }
-
-    const showCurrentChallenge = bool => {
-        if (bool) {
-            currentChallenge.classList.remove('hidden')
-        }
-        else {
-            currentChallenge.classList.add('hidden')
-        }
-    }
+    const showPlayerInput = bool => playerInput.className = bool ? '' : 'hidden'
+    const showCurrentChallenge = bool => currentChallenge.style.display = bool ? 'block' : 'none'
 
     const detectChallengeComplete = () => playerInput.value === currentChallenge.innerHTML
     
@@ -64,19 +45,20 @@ const SyntaxBlast = config => {
     }
 
     const levelLooper = level => {
-
         let i = 0 // index of current 'challenge'
         let font = 1
         let opacity = 0
         let width = 5   // up to 45vw
         currentChallenge.innerHTML = level[i]
-        showCurrentChallenge(true)
+
         showPlayerInput(true)
+        showCurrentChallenge(true)
+        playerInput.focus()
 
         let levelSequence = setInterval(() => {
-            if (detectChallengeComplete()) {
-                
-                playPlayerInputMessage(["Nice", "Get Ready..."], 2000)
+
+            if (detectChallengeComplete()) {    
+                playMessage("Get Ready...", 2000)
                 TEST_LEVEL_STATS.kills += 1
                 setEl("player-stats", updateStatsDisplay(TEST_LEVEL_STATS))
 
@@ -86,20 +68,22 @@ const SyntaxBlast = config => {
                 // Level is complete
                 if (i === level.length - 1) {                    
                     levelComplete = true
-                    playPlayerInputMessage([dialog.levelComplete], 3000)
-                    showCurrentChallenge(false)
-                    showPlayerInput(false)
+                    playMessage([dialog.levelComplete], 3000)
+
                     // Load / Reset Next Level...
                     // Level Ends SyntaxBlast() gets called again on next Level Start
-            
-                    clearInterval(levelSequence)
+                    setTimeout(() => {
+                        showCurrentChallenge(false)
+                        showPlayerInput(false)
+                        showStartButton(true)
+                        clearInterval(levelSequence), 7000 })
                 }
                 else {
                     i++
                     currentChallenge.innerHTML = level[i]
                 }
-
-            } else {
+            }
+            else {
                 font++
                 opacity += 0.02
                 width += 1
@@ -114,13 +98,9 @@ const SyntaxBlast = config => {
                 textEnemyEffects(font, opacity, width)
             }
         }, 200)
-
-    } // End level looper
-
-    if (!levelComplete) {
-        levelLooper(TESTS.INTRO_LEVEL_TEST);
     }
 
+    levelLooper(TESTS.INTRO_LEVEL_TEST);
 }
 
  // Stats
@@ -143,13 +123,10 @@ const startButtonClickInit = () => {
 
     button.addEventListener('click', () => {
         
-        button.style.display = "none" // todo: add easein-out on display rule
-    
-        // Minimize landing logo
-        const logo = getEl('logo')
-        logo.classList.add('mini') // todo: ease here too
-    
-        // Set Stats
+        button.style.display = "none" // Hide start button
+        const logo = getEl('logo')    // Minimize logo
+        logo.classList.add('mini')
+        // Set and show stats
         const stats = setEl("player-stats", updateStatsDisplay(TEST_LEVEL_STATS))
         stats.classList.remove('hidden')
         
