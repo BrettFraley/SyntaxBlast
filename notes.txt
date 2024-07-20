@@ -1,50 +1,49 @@
 Syntax Blast TODO / Notes
+---------------------------
 
 - Work on UI, layout, get basic pieces in place
-    - The player-input element
-    - The level-area element
+    - The player-input element   [ X ]
+    - The level-area element     [ X ]
 
-After getting level logic, stats, level UI loading and saving complete:
-- Should probably be using a canvas, animation lib, and animation frames
-- Build a level
+After getting level logic, stats, level UI loading and saving complete: [ WIP ]
+- Should probably be using a canvas, animation lib, and animation frames   [ T B D ]
+- Build a level [ IN PROGRESS ]
 
-MOVING FORWARD
+
 ---------------
 - Keep to one level.
-- A missed challenge reduces health by -25 and that challenge is just gone
 - The Player Stats
 - Basic needed UI Things
 - Inviting instructions
-- Start button launches instructions and ready button
-	- Logo shrinks down.
-	- Level area appears with ready button
-	- STATS: Current game attempt stats
-		- Time in game stats eg: how far, how much time, attempts
-FUN
-- Soundtrack with Options
-
+- Start button launches instructions and ready button  [ MAYBE ]
 
 JULY 19th
 -----------
 - do something with the stats
     -- positioned them 						[ X ]
-    ---- next hide until game init			[   ] 
-    ---- next - make style changes			[   ]
+    ---- next hide until game init			[ X ] 
+    ---- next - make style changes			[ X ]
 
-- put padding above player input / mess with width
-- try colors on level area
-- FIX LOOP
+- put padding above player input / mess with width [ X ]
+- try colors on level area                          [ X ]
+- FIX LOOP                                          [ X ]
+
+JULY 20th
+-----------------
+Gameplay
+End Of Level
+Between Level Transition
+Player Fail / Health / Try Again
 
 
+
+
+
+
+
+----------------------------------------------------------------------------
 - try body background ui color switcher (only in level dev / test area level)
-
 
 The whole first level is a playground / demo / customizable level
 until moved to a switch that may be turned off and on
 once game is further along..
-
-
-
-
-
-

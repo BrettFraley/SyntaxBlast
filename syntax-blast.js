@@ -23,53 +23,83 @@ const SyntaxBlast = config => {
 
     // Keyboard input
     let playerInput = getEl('player-input')
-    playerInput.classList.remove('hidden')
 
-    let detectChallengeComplete = () => playerInput.value === currentChallenge.innerHTML
+    // Show message, wait timeInterval, clear it, show next message
+    const playPlayerInputMessage = (messages, timeInterval) => {
+        for (let i = 0; i < messages.length; i++) {
+            playerInput.value = messages[i]
+            setTimeout(() => { playerInput.value = "" }, timeInterval)
+        }
+    }
+
+    const showStartButton = bool => {
+        getEl('start-button').display = 'block';
+    }
+
+    const showPlayerInput = bool => {
+        if (bool) {
+            playerInput.classList.remove('hidden')
+            playerInput.focus()
+        }
+        else {
+            playerInput.classList.add('hidden')
+        }
+    }
+
+    const showCurrentChallenge = bool => {
+        if (bool) {
+            currentChallenge.classList.remove('hidden')
+        }
+        else {
+            currentChallenge.classList.add('hidden')
+        }
+    }
+
+    const detectChallengeComplete = () => playerInput.value === currentChallenge.innerHTML
     
-    function textEnemyEffects(font, opacity, width) {
+    const textEnemyEffects = (font, opacity, width) => {
         currentChallenge.style.fontSize = font + "px"
         currentChallenge.style.opacity = opacity
         currentChallenge.style.width = width + "vw"
     }
 
-    function levelLooper(challenge_index) {
-        let i = challenge_index || 0 // index of current 'challenge'
+    const levelLooper = level => {
+
+        let i = 0 // index of current 'challenge'
         let font = 1
         let opacity = 0
-        let width = 5   // up to 45vw  
+        let width = 5   // up to 45vw
+        currentChallenge.innerHTML = level[i]
+        showCurrentChallenge(true)
+        showPlayerInput(true)
 
         let levelSequence = setInterval(() => {
             if (detectChallengeComplete()) {
-
-                playerInput.value = "Nice!" // randomize encouragin dialogue
-                setTimeout(() => {
-                    playerInput.value = ""
-                }, 1000)
                 
+                playPlayerInputMessage(["Nice", "Get Ready..."], 2000)
                 TEST_LEVEL_STATS.kills += 1
                 setEl("player-stats", updateStatsDisplay(TEST_LEVEL_STATS))
 
                 font = 1
                 opacity = 0
                 width = 5
-                i++
-                
-                // If level[i] now does not exist -> levelComplete
-                currentChallenge.innerHTML = TESTS.INTRO_LEVEL_TEST[i] || dialog.levelComplete
-
-                if (currentChallenge.innerHTML === dialog.levelComplete) {
-                    console.log(currentChallenge.innerHTML === dialog.levelComplete)
-                    console.log(currentChallenge.innerHTML )
+                // Level is complete
+                if (i === level.length - 1) {                    
                     levelComplete = true
+                    playPlayerInputMessage([dialog.levelComplete], 3000)
+                    showCurrentChallenge(false)
+                    showPlayerInput(false)
+                    // Load / Reset Next Level...
+                    // Level Ends SyntaxBlast() gets called again on next Level Start
+            
                     clearInterval(levelSequence)
-                    
-                    
                 }
-                // Load / Reset Next Level...
-                // Level Ends SyntaxBlast() gets called again on next Level Start
-            }
-            else {
+                else {
+                    i++
+                    currentChallenge.innerHTML = level[i]
+                }
+
+            } else {
                 font++
                 opacity += 0.02
                 width += 1
@@ -84,15 +114,13 @@ const SyntaxBlast = config => {
                 textEnemyEffects(font, opacity, width)
             }
         }, 200)
-    }
+
+    } // End level looper
 
     if (!levelComplete) {
-        levelLooper(0);
+        levelLooper(TESTS.INTRO_LEVEL_TEST);
     }
-    else {
-        currentChallenge.classList.add('level-complete')
-    }
-    
+
 }
 
  // Stats
@@ -104,7 +132,6 @@ let TEST_LEVEL_STATS = {
 }
 
 function updateStatsDisplay(stats) {
-
   return `<p>Level: ${stats.levelNumber}</br>
           Name: ${stats.levelName}</br>
           Kills: ${stats.kills}</br>
