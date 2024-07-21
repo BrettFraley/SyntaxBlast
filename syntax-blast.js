@@ -8,8 +8,6 @@ const setEl = (id, val) => {
     return el
 }
 
-const showEl = (el, bool) => el['display'] = bool ? 'block' : 'none'
-
 // Dialog
 const dialog = {
     levelComplete: "L e V e L C o M p L e T e",
@@ -30,7 +28,7 @@ const SyntaxBlast = config => {
 
     const showStartButton = bool => {
         const startButton = getEl('start-button')
-        startButton.display = bool ? 'block' : 'none'
+        startButton.style.display = bool ? 'block' : 'none'
     }
 
     const showPlayerInput = bool => playerInput.className = bool ? '' : 'hidden'
@@ -59,8 +57,8 @@ const SyntaxBlast = config => {
 
             if (detectChallengeComplete()) {    
                 playMessage("Get Ready...", 2000)
-                TEST_LEVEL_STATS.kills += 1
-                setEl("player-stats", updateStatsDisplay(TEST_LEVEL_STATS))
+                PLAYER_STATS.kills += 1
+                setEl("player-stats", updateStatsDisplay(PLAYER_STATS))
 
                 font = 1
                 opacity = 0
@@ -68,7 +66,7 @@ const SyntaxBlast = config => {
                 // Level is complete
                 if (i === level.length - 1) {                    
                     levelComplete = true
-                    playMessage([dialog.levelComplete], 3000)
+                    playMessage([dialog.levelComplete], 3000) //TODO: not working
 
                     // Load / Reset Next Level...
                     // Level Ends SyntaxBlast() gets called again on next Level Start
@@ -85,15 +83,24 @@ const SyntaxBlast = config => {
             }
             else {
                 font++
-                opacity += 0.02
+                opacity += 0.05
                 width += 1
 
-                if (font > 49 && !detectChallengeComplete()) {
+                if (font > 59 && !detectChallengeComplete()) {
                     font = 1
                     opacity = 0.2
                     width = 5
-                    TEST_LEVEL_STATS.health -= 25
-                    setEl("player-stats", updateStatsDisplay(TEST_LEVEL_STATS))
+                    PLAYER_STATS.health -= 25
+                    setEl("player-stats", updateStatsDisplay(PLAYER_STATS))
+
+                    // Stop this level sequence when health at zero
+                    if (PLAYER_STATS.health === 0) {
+                        clearInterval(levelSequence)
+
+                        // TODO: FAILED | GAME OVER | LAST BREAKPOINT ???
+                    }
+
+
                 }
                 textEnemyEffects(font, opacity, width)
             }
@@ -104,7 +111,7 @@ const SyntaxBlast = config => {
 }
 
  // Stats
-let TEST_LEVEL_STATS = {
+let PLAYER_STATS = {
     levelNumber: 0,
     levelName: "TESTS",
     kills: 0,
@@ -127,7 +134,7 @@ const startButtonClickInit = () => {
         const logo = getEl('logo')    // Minimize logo
         logo.classList.add('mini')
         // Set and show stats
-        const stats = setEl("player-stats", updateStatsDisplay(TEST_LEVEL_STATS))
+        const stats = setEl("player-stats", updateStatsDisplay(PLAYER_STATS))
         stats.classList.remove('hidden')
         
         SyntaxBlast('test - config')

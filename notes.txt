@@ -28,12 +28,77 @@ JULY 19th
 - try colors on level area                          [ X ]
 - FIX LOOP                                          [ X ]
 
-JULY 20th
+JULY 20th | JULY 21
 -----------------
 Gameplay
 End Of Level
-Between Level Transition
-Player Fail / Health / Try Again
+Between Level Transition <----------      Congrats / Level Menu / Stats / Load & Run Next Level
+Player Fail / Health / Try Again <------- Need health check logic / failed / game over
+------
+But Today: Screw with cool css.
+           Screw with completely different approach / pivot, from being only
+           a developer's learning/training tool to a more general actual game,
+           but still aligned with the concept(s)
+
+    TODO: 
+        - Need level complete, level failed state
+        - Is there ever really a GAME OVER and LIVES, or you just have to 
+          complete the whole thing (with breakpoints) to win
+        - Need to introduce a dynamic Pre-level. post-level, game status 
+          message display utils
+
+
+--- IDEAS:
+        - No levels, but a continuous stream of enemies with breakpoints
+        - Enemies with armor where a character must be typed more than once
+            in order to break through and cause damage
+
+        - I think the player input should be fixed near bottom of screen
+        and larger... while the level area is then more prodiment
+
+
+
+
+
+               {}
+            (       )
+        (               )
+        ----------------
+
+
+        [ { } ] : [ { } ]
+        {{{{{{{{}}}}}}}}
+            {{{{{}}}}}
+
+
+
+                [   ]
+            [           ]
+        [                   ]
+            [           ]
+                [   ]
+
+
+
+
+        {     {       }     }
+            {   {  }    }
+                {  }
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
