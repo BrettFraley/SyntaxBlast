@@ -86,7 +86,7 @@ const SyntaxBlast = config => {
                 opacity += 0.05
                 width += 1
 
-                if (font > 59 && !detectChallengeComplete()) {
+                if (font > 69 && !detectChallengeComplete()) {
                     font = 1
                     opacity = 0.2
                     width = 5
@@ -100,19 +100,20 @@ const SyntaxBlast = config => {
                         // TODO: FAILED | GAME OVER | LAST BREAKPOINT ???
                     }
 
+
                 }
                 textEnemyEffects(font, opacity, width)
             }
-        }, 200)
+        }, 100)
     }
-
-    levelLooper(TESTS.INTRO_LEVEL_TEST);
+    console.table(TESTS)
+    levelLooper(TESTS.APPROACH);
 }
 
  // Stats
 let PLAYER_STATS = {
     levelNumber: 0,
-    levelName: "TESTS",
+    levelName: "The Approachers",
     kills: 0,
     health: 100
 }

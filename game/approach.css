@@ -1,0 +1,109 @@
+
+/* Syntax Blast Rules  **/
+body {
+  background-color: #111;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 900;
+  font-size: larger;
+  text-align: center;
+}
+
+header {
+  padding: 30px;
+  margin-bottom: 15px;
+}
+
+#start-button {
+  width: 475px;
+  height: 70px;
+  padding: 12px;
+  border-radius: 12px;
+  border: solid 5px darkviolet;
+  background-color: #e3e3e8;
+  color: indigo;
+  font-size: xx-large;
+  font-weight: 900;
+  text-shadow: -5px 3px 5px lime, -7px 6px 10px #000;
+  box-shadow: 0px -10px 15px teal inset, 0px 10px 10px #000;
+}
+
+#level-area {
+  min-height:100px;
+  width: 45vw;
+  font-size: 2.5em;
+  text-align: center;
+  margin: 20px auto;
+  padding: 15px;
+  color: #fff;
+}
+
+#player-input {
+  min-height:100px;
+  width: 45vw;
+  font-size: 2.5em;
+  text-align: center;
+  margin: 20px auto;
+  padding: 15px;
+  background-color:#0B0A0C;
+  color: lime;
+  font-family:'Courier New', Courier, monospace;
+  border: dashed 5px #00dd70;
+  border-radius: 15px;
+  text-shadow: -5px 3px 5px #2d073a, -7px 6px 10px #000;
+  box-shadow: 0px -10px 15px teal inset, 0px 10px 10px #000;
+}
+
+#logo {
+  width:  475px;
+  height: 325px;
+  padding: 30px;
+}
+
+#logo.mini {
+  width:  125px;
+  height: 225px;
+  position: absolute;
+  left: 0;
+}
+
+#player-stats {
+  padding: 10px;
+  width: 275PX;;
+  min-height: 35px;
+  background-color:#0B0A0C;
+  color: lime;
+  font-family:'Courier New', Courier, monospace;
+  margin: 15px;
+  position: relative;
+  left: 50vw;
+  border: dashed 5px #00dd70;
+  border-radius: 15px;
+  text-shadow: -5px 3px 5px #2d073a, -7px 6px 10px #000;
+  box-shadow: 0px -10px 15px teal inset, 0px 10px 10px #000;
+}
+
+#player-stats p {
+  border-radius: 15px;
+  opacity: 1;
+  font-size: 1.25em;
+  padding: 15px;
+  text-align: justify;
+}
+
+footer {
+  width: 100vw;
+  height: 30px;
+  padding: 15px;
+  background-color: #000;
+  color: #008fcc;
+  font-weight: 200;
+  letter-spacing: 0.2em;
+}
+footer a:link {
+  text-decoration: none;
+}
+
+/* Lil' Helpers **/
+.hidden, .devtrack { display: none }
+
+

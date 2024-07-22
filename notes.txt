@@ -44,7 +44,7 @@ But Today: Screw with cool css.
         - Need level complete, level failed state
         - Is there ever really a GAME OVER and LIVES, or you just have to 
           complete the whole thing (with breakpoints) to win
-        - Need to introduce a dynamic Pre-level. post-level, game status 
+        - Need to introduce a dynamic system for Pre-level. post-level, game status 
           message display utils
 
 
